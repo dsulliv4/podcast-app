@@ -1,0 +1,19 @@
+<h1><%= @podcast.name%>  </h1>
+
+
+#<% if @podcast.image.attached? %>
+ # <%= image_tag url_for(@ice_cream.image) %>
+#<% end %>
+
+<h2> <%= @podcast.name %> </h2>
+<div>
+  <p><%= @podcast.description %></p>
+</div>
+
+<h3>Added by: <%= link_to @podcast.user, user_path(@user)%> </h3>
+
+<%= link_to "Edit #{@podcasr.flavor}", edit_podcast_path(@podcast) if @podcast.user == current_user%>
+
+<br></br>
+
+<%= link_to "See all Reviews", podcast_reviews_path(@podcast) %>

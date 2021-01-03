@@ -1,0 +1,9 @@
+<div>
+  <h1>Welcome <%= (current_user.name).titleize if current_user %></h1>
+</div>
+
+<h2>Podcasts</h2>
+
+<ul class="podcasts">
+  <%= render @podcasts %>
+</ul>

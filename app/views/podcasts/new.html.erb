@@ -1,0 +1,36 @@
+<h1> Upload a new Podcast! </h1>
+
+
+<%= form_for(@podcast) do |f| %>
+    <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    </div>
+    <div>
+    <%= f.label :author %>
+    <%= f.text_field :author %>
+    </div>
+    <div>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+    </div>
+
+    <p> Select a Podcast that already exists </p>
+    <div>
+        <%=f.collection_select :podcast_id, Podcast.all, :id, :name %>
+    </div>
+
+    <p> Or Archive a New Podcast! </p>
+    <div>
+        <%=f.fields_for :podcast do |f| %>
+            <%= f.label :name %>
+            <%= f.text_field :name %>
+            <%= f.label :author %>
+            <%= f.text_field :author %>
+            <%= f.label :description %>
+            <%= f.text_area :description %>
+      <% end %>
+
+    <%= f.submit %>
+
+<% end %>

@@ -1,8 +1,9 @@
-<h1> Sign Up! </h1>
+<h1> Add a Review! </h1>
+
 
 <%= form_for(@user) do |f| %>
     <%= f.label :stars %>
-    <%= f.text_field :stars %>
+    <%= f.number_field :stars, min:0, max:5 %>
 
     <%= f.label :description %>
     <%= f.text_field :description %>
@@ -11,4 +12,3 @@
     <%= f.submit "Sign Up" %> 
 
 <% end %>
-

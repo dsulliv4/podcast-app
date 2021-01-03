@@ -1,2 +1,11 @@
 class PodcastsController < ApplicationController
-end
+
+
+    def new
+        @podcast = Podcast.new
+
+    end
+
+   
+
+end 
