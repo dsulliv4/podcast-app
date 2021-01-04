@@ -1,10 +1,9 @@
 class ApplicationController < ActionController::Base
 
-
-private
-
-def current_user
-    @current_user 
+    def after_sign_in_path_for(resource)
+        # user_path(current_user) # your path
+        podcasts_path
+    end
 
 
 
