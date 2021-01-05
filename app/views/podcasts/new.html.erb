@@ -17,7 +17,7 @@
 
     <p> Select a Podcast that already exists </p>
     <div>
-        <%=f.collection_select :podcast_id, Podcast.all, :id, :name %>
+        <%=f.collection_select :id, Podcast.all, :id, :name %>
     </div>
 
     <p> Or Archive a New Podcast! </p>

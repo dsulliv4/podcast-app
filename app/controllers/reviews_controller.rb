@@ -25,7 +25,7 @@ class ReviewsController < ApplicationController
   
     def index
       #how do i check if it's nested & a valid id
-      if @podcasr = Podcast.find_by_id(params[:podcast_id])
+      if @podcast = Podcast.find_by_id(params[:podcast_id])
         #nested
         @reviews = @podcast.reviews
       else
