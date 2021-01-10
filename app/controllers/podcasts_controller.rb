@@ -1,31 +1,42 @@
 class PodcastsController < ApplicationController
-    before_action :user_signed_in?
 
     def new
-        @podcast = Podcast.new
-
+      @podcast = Podcast.new
     end
+  
+    def create
+      @podcast = Podcast.create(podcast_params)
 
-   def create   
-    @podcast = current_user.podcasts.build(podcast_params)
-      if @podcast.save
+      if @podcast.present?
+    
         redirect_to podcast_path(@podcast)
       else
         render :new
       end
-   end 
+    end
+  
+    def show
+    
+      @podcast = Podcast.find(params[:id])
 
-   def index
-   end 
-
-   
-
-
-private
-
-def podcast_params 
-    params.require!
-end
-
-
-end 
+    end
+  
+    def index
+      @podcasts = Podcast.all
+    end
+  
+  private
+  
+    def podcast_params
+      params.require(:podcast).permit!
+    end
+  
+    # def logged_in_user
+    #   unless logged_in?
+    #     store_location
+    #     flash[:danger] = "Please log in."
+    #     redirect_to login_url
+    #   end
+    # end
+  
+  end

@@ -22,5 +22,18 @@ def create
         redirect_to login_path
     end 
 end 
+
+
+def GoogleAuth
+    access_token = request.env["omniauth.auth"]
+    user = User.from_omniauth(access_token)
+    if user.present? 
+        session[:user_id] = user.id 
+        redirect_to user_path(user)
+    else   
+     
+        redirect login_path
+    end
 end 
 
+end 

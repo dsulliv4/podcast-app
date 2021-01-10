@@ -4,8 +4,10 @@ class ApplicationController < ActionController::Base
         # user_path(current_user) # your path
         podcasts_path
     end
-
-
+  
+    def current_user
+      User.find(session[:user_id]) rescue nil
+    end
 
 
 

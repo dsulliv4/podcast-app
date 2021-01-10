@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_01_074245) do
+ActiveRecord::Schema.define(version: 2021_01_08_050926) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -21,9 +21,11 @@ ActiveRecord::Schema.define(version: 2021_01_01_074245) do
   create_table "podcasts", force: :cascade do |t|
     t.string "name"
     t.string "author"
+    t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "description"
+    t.integer "category_id", null: false
+    t.index ["category_id"], name: "index_podcasts_on_category_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -37,6 +39,11 @@ ActiveRecord::Schema.define(version: 2021_01_01_074245) do
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
+  create_table "user_podcasts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "podcast_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
@@ -44,6 +51,7 @@ ActiveRecord::Schema.define(version: 2021_01_01_074245) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "podcasts", "categories"
   add_foreign_key "reviews", "podcasts"
   add_foreign_key "reviews", "users"
 end
