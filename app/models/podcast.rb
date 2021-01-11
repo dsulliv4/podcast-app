@@ -15,4 +15,6 @@ def set_id
   self.id = Podcast.last.id + 1 
 end
 
+def 
+
 end

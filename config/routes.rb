@@ -8,13 +8,13 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy'
   get '/auth/google_oauth2/callback' => 'sessions#GoogleAuth'
   get '/auth/failure' => 'sessions#new'
-
+  
 
 
   resources :reviews
   resources :categories
   resources :podcasts do 
-    resources :reviews, only: [:new, :index] 
+    resources :reviews, only: [:new, :index, :create] 
   end 
   resources :users 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

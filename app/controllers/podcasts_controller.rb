@@ -5,15 +5,15 @@ class PodcastsController < ApplicationController
     end
   
     def create
-      @podcast = Podcast.create(podcast_params)
-
-      if @podcast.present?
+        if params[:podcast][:id].present?  
+          @podcast = Podcast.find_by(id: params[:podcast][:id]) 
+        else
+          @podcast = Podcast.find_or_create_by(podcast_params) # if it is not present, then they want to create a new one, use find or create so it doesn't make duplicates
+        end
     
-        redirect_to podcast_path(@podcast)
-      else
-        render :new
+        render :new 
       end
-    end
+  
   
     def show
     
@@ -27,9 +27,9 @@ class PodcastsController < ApplicationController
   
   private
   
-    def podcast_params
-      params.require(:podcast).permit!
-    end
+  def podcast_params
+    params.require(:podcast).permit(:name, :author, :description, :category_id)
+  end
   
     # def logged_in_user
     #   unless logged_in?

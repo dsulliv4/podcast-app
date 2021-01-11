@@ -3,8 +3,13 @@
 <ul>
 <% @categories.each do |category| %>
      <li> <%= category.name %> </li>
-
+     <ul>
+     <% category.podcasts.each do |podcast| %>
+          <li><a href="<%= podcast_path(podcast)  %>"><%= podcast.name %></a> </li>
+     <% end %>
+     </ul>
 <% end %>
 
 </ul>
+
 

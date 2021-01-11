@@ -4,6 +4,7 @@ class CategoriesController < ApplicationController
    
     def index
         @categories = Category.all
+        @podcasts = Podcast.all
     end 
 
    def show

@@ -1,15 +1,11 @@
 <h1> Upload a new Podcast! </h1>
-
-
 <%= form_for(@podcast) do |f| %>
 
+    
     <p> Select a Podcast that already exists </p>
     <div>
-        <%=f.collection_select :id, Podcast.all, :id, :name %>
+        <%=f.collection_select :id, Podcast.all, :id, :name, prompt: true %>
     </div>
-
-
-
     <p> Or Archive a New Podcast! </p>
    
     
@@ -21,8 +17,8 @@
             <%= f.text_area :description %>
             <%= f.label :category %>
             <%=f.collection_select :category_id, Category.all, :id, :name %>
-
     <%= f.submit %>
+
 
 
 <% end %>
