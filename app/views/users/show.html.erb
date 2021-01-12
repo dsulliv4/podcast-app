@@ -3,10 +3,8 @@
 <h3> Here's what you've listened to: </h3>
 
 <ul>
-<% @user.users_podcasts.each do |podcast| %>
- <li><%= podcast.name %> </li>
- <li><%= podcast.author %> </li>   
-
+<% Podcast.joins(:users_podcasts=>[:user]).where("users.id = ?", current_user.id).each do |podcast| %>
+    <li><%= podcast.name %> </li>
  <% end %>
 
 <br>
