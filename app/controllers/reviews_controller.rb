@@ -11,9 +11,10 @@ class ReviewsController < ApplicationController
     end
   
     def create
+
       @review = current_user.reviews.build(review_params)
       if @review.save
-        redirect_to review_path(@review)
+        redirect_to podcast_path(@review.podcast)
       else
         render :new
       end

@@ -1,11 +1,14 @@
 <h1> Reviews for <%= @podcast.name %> </h1>
 
 <h4> <ul> <% @reviews.each do |review| %> 
-    <li> <%= review.stars %><br>
+    <li> <%= review.stars %> stars!
+    <br>
     <%= review.description %>
     <br>
+    <h3> Written by: </h3>
     <%= review.user.username %>
-    <br>
-
     </li>
+    <br>
+    <br>
+    
     <% end %>

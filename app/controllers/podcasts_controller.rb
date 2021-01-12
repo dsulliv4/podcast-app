@@ -11,7 +11,7 @@ class PodcastsController < ApplicationController
           @podcast = Podcast.find_or_create_by(podcast_params) # if it is not present, then they want to create a new one, use find or create so it doesn't make duplicates
         end
     
-        render :new 
+        redirect_to podcast_path(@podcast)
       end
   
   
@@ -19,6 +19,10 @@ class PodcastsController < ApplicationController
     
       @podcast = Podcast.find(params[:id])
 
+    end
+
+    def most_recent
+        @podcasts = Podcast.most_recent
     end
   
     def index

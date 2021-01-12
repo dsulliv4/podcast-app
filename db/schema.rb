@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_08_050926) do
+ActiveRecord::Schema.define(version: 2021_01_11_233746) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2021_01_08_050926) do
 
   create_table "reviews", force: :cascade do |t|
     t.integer "stars"
-    t.integer "description"
+    t.string "description"
     t.integer "user_id", null: false
     t.integer "podcast_id", null: false
     t.datetime "created_at", precision: 6, null: false

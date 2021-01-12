@@ -2,6 +2,12 @@
 
 <h3> Here's what you've listened to: </h3>
 
+<ul>
+<% @user.podcasts.each do |podcast| %>
+ <li><%= podcast.name %> </li>
+ <li><%= podcast.author %> </li>   
+
+ <% end %>
 
 <br>
 <br>
